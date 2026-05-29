@@ -48,7 +48,7 @@ function displayProducts(data) {
             <div class="product-info">
                 <h3>${p.name}</h3>
                 <p>KES ${p.price}</p>
-                <a href="https://wa.me/254700000000?text=I%20want%20to%20order%20${encodeURIComponent(p.name)}" class="wa-btn">ORDER VIA WA</a>
+                <a href="https://wa.me/254140863553?text=I%20want%20to%20order%20${encodeURIComponent(p.name)}" class="wa-btn">ORDER VIA WA</a>
             </div>
         </div>
     `).join('');
