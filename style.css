@@ -1,0 +1,208 @@
+/* Inferno Theme Colors */
+:root {
+    --inferno-bright: #FF6B35; 
+    --inferno-dark: #1A0508;   
+    --white: #FFFFFF;
+    --card-bg: #220a0d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--inferno-dark);
+    color: var(--white);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 90vh;
+    background: linear-gradient(180deg, var(--inferno-bright) 0%, var(--inferno-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 12vw, 8rem);
+    color: var(--inferno-dark);
+    line-height: 0.8;
+    text-transform: uppercase;
+}
+
+.hero h1 span {
+    display: block;
+    -webkit-text-stroke: 1.5px var(--inferno-dark);
+    color: transparent;
+}
+
+.hero p{
+    color: #2a1014;
+    text-shadow:#110602;
+}
+
+.tag {
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: var(--inferno-dark);
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVE FILTERS --- */
+.filter-section {
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    background: var(--inferno-dark);
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    justify-content: flex-start;
+    scrollbar-width: none;
+}
+
+.filter-section::-webkit-scrollbar { display: none; }
+
+@media (min-width: 768px) {
+    .filter-section { justify-content: center; }
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--inferno-bright);
+    color: var(--inferno-bright);
+    padding: 10px 22px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.filter-btn.active {
+    background: var(--inferno-bright);
+    color: var(--inferno-dark);
+}
+
+/* --- RESPONSIVE GRID --- */
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    /* Default: 2 columns for mobile */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 600px) {
+    .grid-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1024px) {
+    .grid-container { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --- PRODUCT CARDS --- */
+.product-card {
+    background: var(--card-bg);
+    padding: 12px;
+    border-radius: 15px;
+    position: relative;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    border-color: var(--inferno-bright);
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--inferno-bright);
+    color: var(--inferno-dark);
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.badge.sold-out {
+    background: #444;
+    color: #999;
+}
+
+.product-info h3 {
+    font-family: 'Syne', sans-serif;
+    margin: 12px 0 5px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.product-info p {
+    color: var(--inferno-bright);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.wa-btn {
+    display: block;
+    background: var(--white);
+    color: #000;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.wa-btn:hover {
+    background: var(--inferno-bright);
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid #2a1014;
+}
+
+.footer-logo {
+    font-family: 'Syne', sans-serif;
+    color: var(--inferno-bright);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #888;
+    text-decoration: none;
+    font-weight: 500;
+}

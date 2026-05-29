@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFERNO | Exclusive Streetwear</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section class="hero">
+        <span class="tag">ISIOLO'S FINEST</span>
+        <h1>INFERNO <span>DROP 26</span></h1>
+        <p>Premium streetwear for those who live in the heat.</p>
+    </section>
+
+    <nav class="filter-section">
+        <button class="filter-btn active" onclick="filterData('all', this)">ALL</button>
+        <button class="filter-btn" onclick="filterData('sneakers', this)">SNEAKERS</button>
+        <button class="filter-btn" onclick="filterData('jackets', this)">JACKETS</button>
+        <button class="filter-btn" onclick="filterData('pants', this)">PANTS</button>
+        <button class="filter-btn" onclick="filterData('shirts', this)">SHIRTS</button>
+  <button class="filter-btn" onclick="filterData('jerseys', this)">JERSEYS</button>
+    </nav>
+
+    <main class="grid-container" id="productGrid"></main>
+
+    <footer>
+        <div class="footer-logo">INFERNO.</div>
+        <div class="footer-links">
+            <a href="#">TIKTOK</a> • <a href="#">INSTAGRAM</a> • <a href="#">WHATSAPP</a>
+        </div>
+        <p class="copyright">DESIGNED BY UMULKHER | ISIOLO 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
