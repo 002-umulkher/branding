@@ -3,35 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFERNO | Exclusive Streetwear</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <title>DRIP | Exclusive Men's wear</title>
+    <!-- New Editorial Typography Pairing -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- 1. HERO SECTION -->
     <section class="hero">
         <span class="tag">ISIOLO'S FINEST</span>
-        <h1>INFERNO <span>DROP 26</span></h1>
+        <h1>Mer_luks <span>Collection</span></h1>
         <p>Premium streetwear for those who live in the heat.</p>
     </section>
 
-    <nav class="filter-section">
+    <!-- 2. WHY US SECTION -->
+    <section class="why-us">
+        <div class="section-title">WHY US?</div>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>🔥 EXCLUSIVE DROPS</h3>
+                <p>We don't do mass production. When a drop sells out, it's gone forever.</p>
+            </div>
+            <div class="why-card">
+                <h3>⚡ PREMIUM QUALITY</h3>
+                <p>Heavyweight fabrics and pristine stitching built to endure the heat.</p>
+            </div>
+            <div class="why-card">
+                <h3>🚀 SPEEDY DELIVERY</h3>
+                <p>Instant dispatch directly within Isiolo and swift shipping nationwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. THE DROP (PRODUCTS) -->
+    <section class="shop-section">
+        <div class="section-title">THE COLLECTION</div>
+       <nav class="filter-section">
         <button class="filter-btn active" onclick="filterData('all', this)">ALL</button>
         <button class="filter-btn" onclick="filterData('sneakers', this)">SNEAKERS</button>
-        <button class="filter-btn" onclick="filterData('jackets', this)">JACKETS</button>
+        <button class="filter-btn" onclick="filterData('sliders', this)">SLIDERS & SANDALS</button>
+        <button class="filter-btn" onclick="filterData('shirts', this)">JERSEYS & SHIRTS</button>
         <button class="filter-btn" onclick="filterData('pants', this)">PANTS</button>
-        <button class="filter-btn" onclick="filterData('shirts', this)">SHIRTS</button>
-  <button class="filter-btn" onclick="filterData('jerseys', this)">JERSEYS</button>
+        <button class="filter-btn" onclick="filterData('kanzu', this)">KANZU</button>
+        <button class="filter-btn" onclick="filterData('caps', this)">CAPS</button>
     </nav>
+        <main class="grid-container" id="productGrid"></main>
+    </section>
 
-    <main class="grid-container" id="productGrid"></main>
+    <!-- 4. REVIEWS SECTION -->
+    <section class="reviews">
+        <div class="section-title">WHAT PEOPLE SAY</div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"The material on the puffer jacket is insane. Definitely worth every coin."</p>
+                <span class="review-author">- Alex M.</span>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Cleanest kicks in Isiolo. Package arrived the same day I ordered!"</p>
+                <span class="review-author">- Halima D.</span>
+            </div>
+            <div class="review-card">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Customer service on WhatsApp is top-tier. Very responsive and fast."</p>
+                <span class="review-author">- Brian K.</span>
+            </div>
+        </div>
+    </section>
 
+    <!-- 5. ABOUT US SECTION -->
+    <section class="about-us">
+        <div class="about-content">
+            <div class="section-title">OUR STORY</div>
+            <p>Born from the streets of Isiolo, MER_LUKS was created to bridge the gap between high-end urban fashion and local streetwear culture. We curate exclusive pieces that make a bold statement, ensuring you stand out in any crowd. This isn't just clothing; it's a lifestyle forged in the heat.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <div class="footer-logo">INFERNO.</div>
+        <div class="footer-logo">MER_LUKS.</div>
         <div class="footer-links">
             <a href="#">TIKTOK</a> • <a href="#">INSTAGRAM</a> • <a href="#">WHATSAPP</a>
         </div>
-        <p class="copyright">DESIGNED BY UMULKHER | ISIOLO 2026</p>
+        <p class="copyright">DESIGNED BY STUDIO U_M_Y | ISIOLO 2026</p>
     </footer>
 
     <script src="script.js"></script>

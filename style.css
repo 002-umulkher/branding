@@ -3,6 +3,10 @@
     --inferno-dark: #1A0508;   
     --white: #FFFFFF;
     --card-bg: #220a0d;
+    --section-bg: #140305;
+    /* Clean typographic assignment */
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-sans: 'Space Grotesk', sans-serif;
 }
 
 * {
@@ -11,51 +15,148 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
     background-color: var(--inferno-dark);
     color: var(--white);
-    font-family: 'Space Grotesk', sans-serif;
-    overflow-x: hidden;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- HERO SECTION --- */
+/* --- COMMON SECTION STYLES --- */
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    font-weight: 600;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
+
+/* --- HERO SECTION (Smooth & Editorial) --- */
+/* --- ADAPTIVE HERO WITH RECONGIZABLE RACK BACKGROUND --- */
 .hero {
-    height: 80vh; /* Dropped from 90vh to avoid mobile browser address bar bugs */
-    background: linear-gradient(180deg, var(--inferno-bright) 0%, var(--inferno-dark) 100%);
+    min-height: 80vh;
+    width: 100%;
+    /* Swapped to a crisp, high-contrast rack image with a slightly clearer orange overlay (0.75 instead of 0.88) */
+    background: linear-gradient(180deg, rgba(255, 107, 53, 0.75) 0%, rgba(26, 5, 8, 0.95) 100%), 
+                url('https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* The Cloudy/Blur Magic Layer */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Dropped the blur down to 2px so you can clearly see the clothes and hangers! */
+    backdrop-filter: blur(2px); 
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Keeps all text elements sharply sitting on top of the background */
+.tag, .hero h1, .hero p {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: clamp(2.8rem, 10vw, 7rem); /* Safer fluid sizing for small screens */
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 11vw, 7.5rem);
+    font-weight: 500;
     color: var(--inferno-dark);
-    line-height: 0.85;
-    text-transform: uppercase;
+    line-height: 0.95;
+    text-transform: capitalize; 
+    max-width: 90vw;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.2); 
 }
 
 .hero h1 span {
     display: block;
-    -webkit-text-stroke: 1.5px var(--inferno-dark);
-    color: transparent;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--white);
 }
 
 .tag {
     font-weight: 700;
     letter-spacing: 4px;
     color: var(--inferno-dark);
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     font-size: 0.8rem;
 }
 
-/* --- FILTERS (No Lag Navigation) --- */
+.hero p {
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    margin-top: 20px;
+    max-width: 480px;
+    opacity: 0.85;
+}
+
+/* --- WHY US SECTION --- */
+.why-us {
+    padding: 60px 20px;
+    background-color: var(--section-bg);
+}
+
+.why-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    /* Responsive auto-fit that plays nice down to tiny mobile viewports */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.why-card {
+    background: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.why-card:hover {
+    border-color: #3d1419;
+}
+
+.why-card h3 {
+    font-family: var(--font-sans);
+    color: var(--inferno-bright);
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.why-card p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- SHOP SECTION & FILTERS --- */
+.shop-section {
+    padding: 60px 0;
+}
+
 .filter-section {
-    padding: 15px 10px;
+    padding: 15px;
     position: sticky;
     top: 0;
     background: var(--inferno-dark);
@@ -63,7 +164,7 @@ body {
     display: flex;
     gap: 8px;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth mobile momentum scroll */
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
 }
 
@@ -77,12 +178,13 @@ body {
     background: transparent;
     border: 1px solid var(--inferno-bright);
     color: var(--inferno-bright);
-    padding: 8px 18px;
+    padding: 8px 20px;
     border-radius: 50px;
     cursor: pointer;
     font-weight: 700;
+    font-size: 0.85rem;
     white-space: nowrap;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .filter-btn.active {
@@ -90,37 +192,51 @@ body {
     color: var(--inferno-dark);
 }
 
-/* --- HARDCORE RESPONSIVE GRID --- */
+/* --- PRODUCT GRID --- */
+/* 4. Optimized Fluid Layout Grid */
 .grid-container {
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 16px;
     display: grid;
-    /* Uses dynamic auto-fit so it dynamically handles weird screen widths without breaking */
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); 
-    gap: 15px;
+    /* Dynamically calculates how many columns fit safely without squishing elements */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+    gap: 12px;
 }
 
-/* Upgrades layout for bigger mobile screens and tablets */
+/* Sharp layout adjustments based on actual screen form factors */
 @media (min-width: 480px) {
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .grid-container { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 16px; 
+    }
 }
 @media (min-width: 768px) {
-    .grid-container { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-container { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px; 
+    }
 }
 @media (min-width: 1024px) {
-    .grid-container { grid-template-columns: repeat(4, 1fr); }
+    .grid-container { 
+        grid-template-columns: repeat(4, 1fr); 
+        gap: 24px;
+    }
 }
 
-/* --- PRODUCT CARDS (Performance Optimized) --- */
+/* 5. 100% Fully Responsive Structural Product Cards & Images */
 .product-card {
     background: var(--card-bg);
     padding: 12px;
     border-radius: 12px;
-    position: relative;
     border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%; /* Forces card to naturally scale to the grid column width */
+    box-sizing: border-box;
     transition: transform 0.2s ease, border-color 0.2s ease;
-    will-change: transform; /* Forces GPU hardware acceleration to stop lag */
 }
 
 .product-card:hover {
@@ -128,53 +244,24 @@ body {
     transform: translateY(-4px);
 }
 
+/* The ultimate structural image protector box */
 .img-container {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 1 / 1; /* Forces the box to stay a pristine mathematical square on all screens */
     overflow: hidden;
     border-radius: 8px;
     background: #110305;
+    position: relative;
 }
 
 .product-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-}
-
-.badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: var(--inferno-bright);
-    color: var(--inferno-dark);
-    padding: 4px 8px;
-    font-size: 0.65rem;
-    font-weight: 800;
-    border-radius: 4px;
-    text-transform: uppercase;
-    z-index: 2;
-}
-
-.badge.sold-out {
-    background: #444;
-    color: #999;
-}
-
-.product-info h3 {
-    font-family: 'Syne', sans-serif;
-    margin: 10px 0 4px;
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Keeps text from clipping layout on small phones */
-}
-
-.product-info p {
-    color: var(--inferno-bright);
-    font-weight: 700;
-    font-size: 1rem;
+    display: block;
+    /* CRITICAL: Scales the product image beautifully like a background cover, */
+    /* preventing stretching, squishing, or rendering layout distortion */
+    object-fit: cover; 
+    object-position: center;
 }
 
 .wa-btn {
@@ -182,32 +269,99 @@ body {
     background: var(--white);
     color: #000;
     text-align: center;
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
     border-radius: 6px;
-    margin-top: 12px;
+    margin-top: auto; /* Keeps buttons in clean layout alignment */
     font-weight: 700;
     font-size: 0.8rem;
     transition: background 0.2s;
 }
 
-.wa-btn:hover {
-    background: var(--inferno-bright);
+.wa-btn:hover { 
+    background: var(--inferno-bright); 
+    color: var(--inferno-dark);
+}
+
+/* --- REVIEWS SECTION --- */
+.reviews {
+    padding: 60px 20px;
+    background-color: var(--section-bg);
+}
+
+.reviews-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.review-card {
+    background: var(--inferno-dark);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 3px solid var(--inferno-bright);
+}
+
+.stars {
+    color: var(--inferno-bright);
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.review-card p {
+    font-style: italic;
+    color: #ddd;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.review-author {
+    display: block;
+    font-weight: 700;
+    color: var(--inferno-bright);
+    font-size: 0.85rem;
+}
+
+/* --- ABOUT US SECTION --- */
+.about-us {
+    padding: 80px 20px;
+    background: linear-gradient(180deg, var(--inferno-dark) 0%, var(--section-bg) 100%);
+    display: flex;
+    justify-content: center;
+}
+
+.about-content {
+    max-width: 700px;
+    text-align: center;
+}
+
+.about-content p {
+    color: #ccc;
+    font-size: 1.05rem;
+    line-height: 1.8;
 }
 
 /* --- FOOTER --- */
 footer {
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
-    border-top: 1px solid #2a1014;
-    margin-top: 50px;
+    border-top: 1px solid #593036d1;
+    width: 100%;
 }
 
 .footer-logo {
-    font-family: 'Syne', sans-serif;
+    font-family: var(--font-heading);
+    font-style: italic;
     color: var(--inferno-bright);
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     margin-bottom: 12px;
+}
+
+.footer-links {
+    margin-bottom: 15px;
 }
 
 .footer-links a {
@@ -216,4 +370,11 @@ footer {
     font-weight: 500;
     font-size: 0.85rem;
     margin: 0 10px;
+    display: inline-block;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 10px;
 }
